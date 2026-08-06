@@ -1,0 +1,188 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Header & Navigation */
+header {
+    background-color: #1a252f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #f39c12;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: #f39c12;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('background_image_13.png');
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #f39c12;
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Products Section */
+.products-container {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.product-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 260px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.price {
+    font-size: 18px;
+    color: #27ae60;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+button {
+    width: 100%;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: #1a252f;
+}
+
+/* Contact & Footer */
+.contact-section {
+    background-color: #eaeaea;
+    padding: 30px;
+    text-align: center;
+}
+
+footer {
+    background-color: #1a252f;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}.whatsapp-btn {
+    display: block;
+    background-color: #25D366;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.whatsapp-btn:hover {
+    background-color: #1ebc57;
+}/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('background_image_1.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* ئەڤە بۆ تێکرنا باندێ پارالاکس (Parallax) */
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+.products-container {
+    display: none; /* ئەڤ کۆدە بەشێ کالایان د دەستپێکێدا ڤەشێریت */
+    padding: 50px 20px;
+    text-align: center;
+}/* ڕێکخستنا لۆگۆ و دەقی ل تەنشت ئێک */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* دووراتییا ناڤبەرا لۆگۆ و دەقی */
+    font-size: 22px;
+    font-weight: bold;
+    color: #f39c12;
+}
+
+/* بچیککرنا وێنێ لۆگۆی */
+.logo-img {
+    width: 45px;       /* درێژاهییا لۆگۆی */
+    height: 45px;      /* بلندییا لۆگۆی */
+    object-fit: contain;
+    border-radius: 5px; /* ئەگەر تە دڤێت گۆشێن وێ کێمەکێ بازنەیی بن */
+}.instagram-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 8px;
+    transition: 0.3s;
+}
+
+.instagram-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
