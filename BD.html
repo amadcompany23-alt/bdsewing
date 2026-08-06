@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جهێ ئامه د</title>
+    <link rel="stylesheet" href="BD.css">
+</head>
+<body>
+
+    <!-- سەرپەڕی مالپەری -->
+    <header>
+        <div class="logo">
+    <img src="bd.jpeg" alt="Logo" class="logo-img">
+    <span>BD Sewing</span>
+</div>
+        <nav>
+           
+        <a href="https://wa.me/9647509828338?text=سلاڤ،%20من%20دڤێت پەیوەندێ ب هەوە بکەم" target="_blank" class="whatsapp-btn">واتساب</a>
+		<a href="https://www.instagram.com/bd_sewing/?hl=en" target="_blank" class="instagram-btn">انستاكرام</a>
+        </nav>
+    </header>
+
+    <!-- بەشا سەرەکی -->
+    <section id="home" class="hero">
+        <h1>باشترین بەرهەم و خزمەتگوزاری ل جهەکێ</h1>
+        <p>ئەم باشترین کوالیتی و بهایێن گونجای پێشکێشی تە دکەین</p>
+        <!-- دوگمەیا ل سەرێ پەڕەی یان ناڤ شاشەیی -->
+<button onclick="showProducts()" class="btn">بابەتێن مە</button>
+    </section>
+
+    <!-- بەشا کالایان -->
+    <section id="products" class="products-container">
+        <h2> بابەتێن مەيئن سەرەکی</h2>
+        
+        <div class="product-grid">
+            <!-- کالایا 1 -->
+            <div class="product-card">
+                <img src="1.jpeg" alt="بكرة">
+                <h3>هه مي بكرة</h3>
+                <p>بكرة رقم(1) بكرة(2-3) بكرةأوفر .</p>
+				<button onclick="openModal()" class="btn">بێنه</button>
+				<!-- پێشانگەها وێنەیان (Modal Gallery) -->
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+    <img src="10.jpg" alt="وێنە 10">
+    <img src="11.jpg" alt="وێنە 11">
+    <img src="12.jpg" alt="وێنە 12">
+    <img src="13.jpg" alt="وێنە 13">
+	<img src="14.jpg" alt="وێنە 14">
+	<img src="15.jpg" alt="وێنە 15">
+	<img src="16.jpg" alt="وێنە 16">
+  <img src="17.jpg" alt="وێنە 17">
+  </div>
+</div>
+
+<script>
+function openModal() {
+  document.getElementById("imageModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("imageModal").style.display = "none";
+}
+</script>
+                
+                
+            </div>
+
+            <!-- کالایا 2 -->
+            <div class="product-card">
+                <img src="2.jpeg" alt="قاش">
+                <h3>جورين قاشا</h3>
+                <p>قاش هه مي جور.</p>
+                
+                <button onclick="openModal()" class="btn">بێنه</button>
+            </div>
+
+            <!-- کالایا 3 -->
+            <div class="product-card">
+                <img src="3.jpeg" alt="ده رزيك">
+                <h3>ده رزيك</h3>
+                <p>وەسفەکا کورت دەربارەی کوالیتی و تایبەتمەندیێن ڤێ کالایێ.</p>
+                
+                <button onclick="alert('سپاس بۆ داواکاریا تە!')">داواکرن</button>
+            </div>
+			<!-- بابه ت 4 -->
+            <div class="product-card">
+                <img src="4.jpeg" alt="نيشان">
+                <h3>ئوتی3</h3>
+                <p>وەسفەکا کورت دەربارەی کوالیتی و تایبەتمەندیێن ڤێ کالایێ.</p>
+                
+                <button onclick="alert('سپاس بۆ داواکاریا تە!')">داواکرن</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- بەشا پەیوەندیێ -->
+    <section id="contact" class="contact-section">
+        <h2>بۆ پەیوەندیکرنێ و داخازكرنئ</h2>
+        <p>ژمارا موبایلێ: <strong>07509828338</strong></p>
+        <p>ناونیشان: بازاڕێ سەرەکی</p>
+    </section>
+
+    <!-- ژێرپەڕ -->
+    <footer>
+        <p>BD Sewing</p>
+    </footer>
+
+</body>
+</html>
+<script>
+function showProducts() {
+    var section = document.getElementById("products");
+    if (section.style.display === "none" || section.style.display === "") {
+        section.style.display = "block";
+        section.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        section.style.display = "none";
+    }
+}
+</script>
+</body>
