@@ -31,7 +31,7 @@
 
     <!-- بەشا کالایان -->
     <section id="products" class="products-container">
-        <h2>کالایێن مە یێن سەرەکی</h2>
+        <h2> بابەتێن مەيئن سەرەکی</h2>
         
         <div class="product-grid">
             <!-- کالایا 1 -->
@@ -39,8 +39,33 @@
                 <img src="1.jpeg" alt="بكرة">
                 <h3>هه مي بكرة</h3>
                 <p>بكرة رقم(1) بكرة(2-3) بكرةأوفر .</p>
+				<button onclick="openModal()" class="btn">بێنه</button>
+				<!-- پێشانگەها وێنەیان (Modal Gallery) -->
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+    <img src="10.jpg" alt="وێنە 10">
+    <img src="11.jpg" alt="وێنە 11">
+    <img src="12.jpg" alt="وێنە 12">
+    <img src="13.jpg" alt="وێنە 13">
+	<img src="14.jpg" alt="وێنە 14">
+	<img src="15.jpg" alt="وێنە 15">
+	<img src="16.jpg" alt="وێنە 16">
+  <img src="17.jpg" alt="وێنە 17">
+  </div>
+</div>
+
+<script>
+function openModal() {
+  document.getElementById("imageModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("imageModal").style.display = "none";
+}
+</script>
                 
-                <button onclick="alert('سپاس بۆ داواکاریا تە!')">داواکرن</button>
+                
             </div>
 
             <!-- کالایا 2 -->
@@ -49,7 +74,7 @@
                 <h3>جورين قاشا</h3>
                 <p>قاش هه مي جور.</p>
                 
-                <button onclick="alert('سپاس بۆ داواکاریا تە!')">داواکرن</button>
+                <button onclick="openModal()" class="btn">بێنه</button>
             </div>
 
             <!-- کالایا 3 -->
@@ -57,7 +82,7 @@
                 <img src="3.jpeg" alt="ده رزيك">
                 <h3>ده رزيك</h3>
                 <p>وەسفەکا کورت دەربارەی کوالیتی و تایبەتمەندیێن ڤێ کالایێ.</p>
-                <div class="price">15,000 دینار</div>
+                
                 <button onclick="alert('سپاس بۆ داواکاریا تە!')">داواکرن</button>
             </div>
 			<!-- بابه ت 4 -->
@@ -65,7 +90,7 @@
                 <img src="4.jpeg" alt="نيشان">
                 <h3>ئوتی3</h3>
                 <p>وەسفەکا کورت دەربارەی کوالیتی و تایبەتمەندیێن ڤێ کالایێ.</p>
-                <div class="price">30,000 دینار</div>
+                
                 <button onclick="alert('سپاس بۆ داواکاریا تە!')">داواکرن</button>
             </div>
 
