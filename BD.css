@@ -394,4 +394,22 @@ overflow: scroll;
 
 .phone-link:hover {
   text-decoration: underline;
+}@media (max-width: 600px) {
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .social-links .social {
+    flex: 0 0 calc((100% - 16px) / 3);
+    box-sizing: border-box;
+    width: auto !important;
+    margin: 0;
+    padding: 10px 3px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
 }
