@@ -1,0 +1,29 @@
+<section class="bd-hero" dir="rtl">
+  <div class="bd-hero__content">
+    <span class="bd-hero__label">BD SEWING COMPANY</span>
+
+    <h1>هەمی تشتێن خەیاتیێ<br><em>ل جهەکێ</em></h1>
+
+    <p>
+      بەکەر، زنجیر، ئوتی و کەرستێن خەیاتیێ ب کوالێتیەکا بەرز
+      و بهایێن گونجای لدەف مە هەنە.
+    </p>
+
+    <div class="bd-hero__actions">
+      <a class="bd-hero__primary" href="#products">بەرهەمێن مە ببینە ←</a>
+      <a class="bd-hero__secondary" href="https://wa.me/9647509828338">
+        پەیوەندی ب واتسابێ
+      </a>
+    </div>
+
+    <div class="bd-hero__note">
+      <span>✦ ١٢٠٠ رەنگێن بەکەران</span>
+      <span>✦ گەهاندن بۆ هەمی عێراقێ</span>
+    </div>
+  </div>
+
+  <div class="bd-hero__mark" aria-hidden="true">
+    <div>BD</div>
+    <small>SEWING<br>COMPANY</small>
+  </div>
+</section>

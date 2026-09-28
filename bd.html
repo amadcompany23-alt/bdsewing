@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="ku" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BD Sewing Company</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f5f2eb;
+    }
+
+    [hidden] { display: none !important; }
+
+    .bd-hero {
+      position: relative;
+      isolation: isolate;
+      min-height: 620px;
+      padding: 105px clamp(24px, 7vw, 110px) 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      color: white;
+      background:
+        linear-gradient(rgba(7, 19, 27, .65), rgba(7, 19, 27, .65)),
+        url("back.jpeg") center / cover no-repeat,
+        #101a22;
+    }
+
+    .bd-hero::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(242, 174, 44, .22);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .bd-hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .bd-hero__label {
+      display: inline-block;
+      padding: 9px 15px;
+      border: 1px solid rgba(255, 190, 64, .55);
+      border-radius: 30px;
+      color: #ffc45b;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .bd-hero h1 {
+      margin: 25px 0 18px;
+      font-size: clamp(36px, 5.5vw, 72px);
+      line-height: 1.25;
+    }
+
+    .bd-hero h1 em {
+      font-style: normal;
+      color: #f7ae2c;
+    }
+
+    .bd-hero__actions { margin-top: 32px; }
+
+    .bd-hero__primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 12px 23px;
+      border-radius: 9px;
+      background: #f5a623;
+      color: #17212a;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .bd-hero__note { margin-top: 35px; }
+
+    .bd-hero__mark {
+      flex: 0 0 280px;
+      width: 280px;
+      height: 280px;
+      border: 2px solid rgba(247, 174, 44, .5);
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 90px rgba(245, 166, 35, .13);
+    }
+
+    .bd-hero__mark img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* بوتونێ زمانان */
+    .site-topbar {
+      position: absolute;
+      top: 24px;
+      right: clamp(24px, 7vw, 110px);
+      z-index: 3;
+    }
+
+    .language-switch {
+      display: inline-flex;
+      gap: 3px;
+      padding: 4px;
+      border: 1px solid rgba(255, 190, 64, .65);
+      border-radius: 999px;
+      background: rgba(16, 26, 34, .82);
+    }
+
+    .language-switch button {
+      border: 0;
+      border-radius: 999px;
+      padding: 6px 12px;
+      background: transparent;
+      color: white;
+      font: 600 13px Tahoma, Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    .language-switch button[aria-pressed="true"] {
+      background: #f5a623;
+      color: #17212a;
+    }
+
+    .language-switch button:focus-visible,
+    .catalog-card:focus-visible,
+    .product-dialog button:focus-visible {
+      outline: 2px solid #f5a623;
+      outline-offset: 3px;
+    }
+
+    /* لینکێن سۆشیال */
+    .social {
+      display: inline-block;
+      margin: 5px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .social:hover { filter: brightness(1.15); }
+    .whatsapp { background: #25d366; }
+    .instagram {
+      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf);
+    }
+    .facebook { background: #1877f2; }
+    .tiktok { background: #111; }
+    .snapchat { background: #f39c12; }
+
+    /* جۆرێن بەرهەمان */
+    .catalog {
+      max-width: 1200px;
+      margin: auto;
+      padding: 55px 22px 80px;
+      color: #17222b;
+    }
+
+    .catalog h2 {
+      margin: 0 0 12px;
+      font-size: clamp(27px, 4vw, 42px);
+    }
+
+    .catalog-intro {
+      margin: 0 0 27px;
+      color: #58636b;
+      line-height: 1.8;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .catalog-card {
+      display: block;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      text-align: right;
+      border: 1px solid #e8e1d3;
+      border-radius: 17px;
+      background: white;
+      box-shadow: 0 10px 25px #17222b16;
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .catalog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 17px 30px #17222b26;
+    }
+
+    .catalog-art {
+      position: relative;
+      height: 165px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--accent), #14212b);
+      color: white;
+      font-size: 65px;
+    }
+
+    .catalog-art img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .catalog-card__body {
+      display: block;
+      padding: 18px;
+    }
+
+    .catalog-card__name {
+      display: block;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .catalog-card__hint {
+      display: block;
+      margin-top: 8px;
+      color: #657078;
+      font-size: 14px;
+    }
+
+    .catalog-card__bar {
+      display: block;
+      height: 5px;
+      background: var(--accent);
+    }
+
+    .catalog-back {
+      margin-bottom: 22px;
+      padding: 9px 16px;
+      border: 1px solid #b18b43;
+      border-radius: 9px;
+      background: transparent;
+      color: #17222b;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    /* پەنجەرەیا وێنەیان */
+    .product-dialog {
+      width: min(850px, calc(100% - 32px));
+      max-height: calc(100vh - 32px);
+      padding: 28px;
+      border: 0;
+      border-radius: 18px;
+      background: white;
+      color: #17222b;
+      font: inherit;
+    }
+
+    .product-dialog::backdrop {
+      background: rgba(7, 19, 27, .78);
+    }
+
+    .product-dialog h2 {
+      margin: 0 0 20px;
+      padding-left: 42px;
+    }
+
+    .product-dialog__close {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      width: 36px;
+      height: 36px;
+      border: 0;
+      border-radius: 50%;
+      background: #eee;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .product-dialog__gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+      gap: 14px;
+    }
+
+    .product-dialog__gallery img {
+      display: block;
+      width: 100%;
+      max-height: 65vh;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #f5f2eb;
+    }
+
+    @media (max-width: 700px) {
+      .bd-hero {
+        min-height: auto;
+        padding: 105px 28px 75px;
+      }
+
+      .bd-hero__mark { display: none; }
+
+      .site-topbar {
+        top: 16px;
+        right: 20px;
+      }
+
+      .bd-hero__primary { width: 100%; }
+    }
+
+    @media (max-width: 600px) {
+      .catalog { padding: 38px 16px 60px; }
+
+      .catalog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .catalog-art {
+        height: 125px;
+        font-size: 48px;
+      }
+
+      .catalog-card__body { padding: 12px; }
+      .catalog-card__name { font-size: 17px; }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="bd-hero" dir="rtl">
+    <div class="site-topbar">
+      <div class="language-switch" role="group" aria-label="زمان / اللغة">
+        <button type="button" data-lang="ku" aria-pressed="true">کوردی</button>
+        <button type="button" data-lang="ar" aria-pressed="false">عربي</button>
+      </div>
+    </div>
+
+    <div class="bd-hero__content">
+      <span class="bd-hero__label">BD SEWING COMPANY</span>
+
+      <h1 data-i18n-html="hero">
+        هەمی پێتڤیێن درینگەها<br><em>لجهەکی</em>
+      </h1>
+
+      <h3 data-i18n="wholesale">ب كت و كوم</h3>
+
+      <div class="bd-hero__actions">
+        <a class="bd-hero__primary"
+           href="#products"
+           id="showCategories"
+           data-i18n="showProducts">بەرهەمێن مە ببینە ←</a>
+      </div>
+
+      <div class="social-links">
+        <a class="social whatsapp"
+           href="https://wa.me/9647509828338">واتساب</a>
+
+        <a class="social instagram"
+           href="..."
+           data-i18n="instagram">ئینستاگرام</a>
+
+        <a class="social facebook"
+           href="..."
+           data-i18n="facebook">فەیس بووک</a>
+
+        <a class="social tiktok"
+           href="..."
+           data-i18n="tiktok">تیک تۆک</a>
+
+        <a class="social snapchat"
+           href="..."
+           data-i18n="snapchat">سناب جات</a>
+      </div>
+
+      <div class="bd-hero__note">
+        <h3 data-i18n="delivery">
+          گەهاندن بو هەمی پارێزگەهێن عیراقێ
+        </h3>
+      </div>
+    </div>
+
+    <div class="bd-hero__mark">
+      <img src="bd.jpeg" alt="لوگویێ BD Sewing Company">
+    </div>
+  </section>
+
+  <main>
+    <section class="catalog" id="products" hidden>
+      <div id="categoryView">
+        <h2 data-i18n="products">بەرهەمێن مە</h2>
+        <p class="catalog-intro" data-i18n="choose">
+          جۆرەکێ هەلبژێرە دا بابەتێن وی ببینی.
+        </p>
+        <div class="catalog-grid" id="categoryGrid"></div>
+      </div>
+
+      <div id="itemView" hidden>
+        <button class="catalog-back"
+                id="backToCategories"
+                type="button"
+                data-i18n="back">→ ڤەگەڕە جۆران</button>
+        <h2 id="itemHeading"></h2>
+        <div class="catalog-grid" id="itemGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="product-dialog"
+          id="productDialog"
+          aria-labelledby="productDialogTitle">
+    <button class="product-dialog__close"
+            id="closeProductDialog"
+            type="button"
+            aria-label="داخستن">×</button>
+    <h2 id="productDialogTitle"></h2>
+    <div class="product-dialog__gallery" id="productGallery"></div>
+  </dialog>
+
+  <script>
+    /*
+      ل ڤێرێ ناڤێ وێنەیێن خو بگوهۆڕە.
+      10.jpg تا 13.jpg ل تەنشت bd.html دابنێ.
+    */
+    const categories = [
+      {
+        name: "بەکەر",
+        nameAr: "خيوط الخياطة",
+        color: "#d49a1f",
+        image: "images/spools.jpg",
+        icon: "🧵",
+        products: [
+          {
+            name: "بەکەرێن خەیاتیێ",
+            nameAr: "خيوط الخياطة",
+            image: "images/sewing-spools.jpg",
+            icon: "🧵"
+          },
+          {
+            name: "بەکەرێن ئۆڤەرێ",
+            nameAr: "خيوط الأوفرلوك",
+            image: "1.jpeg",
+            icon: "🧵",
+            images: ["10.jpg", "11.jpg", "12.jpg", "13.jpg"]
+          }
+        ]
+      },
+      {
+        name: "زنجیر",
+        nameAr: "السحابات",
+        color: "#2d6c9d",
+        image: "images/zippers.jpg",
+        icon: "〰️",
+        products: [
+          {
+            name: "زنجیرێن جلکان",
+            nameAr: "سحابات الملابس",
+            image: "images/clothing-zippers.jpg",
+            icon: "〰️"
+          },
+          {
+            name: "زنجیرێن جانتایان",
+            nameAr: "سحابات الحقائب",
+            image: "images/bag-zippers.jpg",
+            icon: "〰️"
+          }
+        ]
+      },
+      {
+        name: "ئوتی",
+        nameAr: "المكاوي",
+        color: "#af5c36",
+        image: "images/irons.jpg",
+        icon: "♨️",
+        products: [
+          {
+            name: "ئوتیێن SILVER STAR",
+            nameAr: "مكاوي SILVER STAR",
+            image: "images/silver-star.jpg",
+            icon: "♨️"
+          },
+          {
+            name: "ئوتیێن دەستی",
+            nameAr: "المكاوي اليدوية",
+            image: "images/hand-irons.jpg",
+            icon: "♨️"
+          }
+        ]
+      },
+      {
+        name: "کەرستێن خەیاتیێ",
+        nameAr: "مستلزمات الخياطة",
+        color: "#56846a",
+        image: "images/accessories.jpg",
+        icon: "✂️",
+        products: [
+          {
+            name: "مەقەس",
+            nameAr: "المقصات",
+            image: "images/scissors.jpg",
+            icon: "✂️"
+          },
+          {
+            name: "سنجاق",
+            nameAr: "الدبابيس",
+            image: "images/pins.jpg",
+            icon: "📍"
+          }
+        ]
+      }
+    ];
+
+    const labels = {
+      ku: {
+        hero: "هەمی پێتڤیێن درینگەها<br><em>لجهەکی</em>",
+        wholesale: "ب كت و كوم",
+        showProducts: "بەرهەمێن مە ببینە ←",
+        delivery: "گەهاندن بو هەمی پارێزگەهێن عیراقێ",
+        products: "بەرهەمێن مە",
+        choose: "جۆرەکێ هەلبژێرە دا بابەتێن وی ببینی.",
+        back: "→ ڤەگەڕە جۆران",
+        viewItems: "بابەتان ببینە ←",
+        viewPhotos: "وێنەیان ببینە ←",
+        missing: "وێنە نەهاتە دیتن: ",
+        instagram: "ئینستاگرام",
+        facebook: "فەیس بووک",
+        tiktok: "تیک تۆک",
+        snapchat: "سناب جات"
+      },
+      ar: {
+        hero: "كل مستلزمات الخياطة<br><em>في مكان واحد</em>",
+        wholesale: "بالجملة والمفرد",
+        showProducts: "شاهد منتجاتنا ←",
+        delivery: "توصيل إلى جميع محافظات العراق",
+        products: "منتجاتنا",
+        choose: "اختر قسماً لمشاهدة منتجاته.",
+        back: "→ العودة إلى الأقسام",
+        viewItems: "شاهد المنتجات ←",
+        viewPhotos: "شاهد الصور ←",
+        missing: "تعذر عرض الصورة: ",
+        instagram: "إنستغرام",
+        facebook: "فيسبوك",
+        tiktok: "تيك توك",
+        snapchat: "سناب شات"
+      }
+    };
+
+    let currentLang = "ku";
+
+    const catalog = document.getElementById("products");
+    const categoryView = document.getElementById("categoryView");
+    const itemView = document.getElementById("itemView");
+    const categoryGrid = document.getElementById("categoryGrid");
+    const itemGrid = document.getElementById("itemGrid");
+    const productDialog = document.getElementById("productDialog");
+    const productGallery = document.getElementById("productGallery");
+
+    function displayName(entry) {
+      return currentLang === "ar"
+        ? (entry.nameAr || entry.name)
+        : entry.name;
+    }
+
+    function showProduct(product) {
+      document.getElementById("productDialogTitle").textContent =
+        displayName(product);
+
+      productGallery.replaceChildren();
+
+      const pictures = product.images ||
+        (product.image ? [product.image] : []);
+
+      pictures.forEach(source => {
+        const picture = document.createElement("img");
+        picture.src = source;
+        picture.alt = displayName(product);
+
+        picture.onerror = () => {
+          const note = document.createElement("p");
+          note.textContent = labels[currentLang].missing + source;
+          picture.replaceWith(note);
+        };
+
+        productGallery.appendChild(picture);
+      });
+
+      productDialog.showModal();
+    }
+
+    document.getElementById("closeProductDialog")
+      .addEventListener("click", () => productDialog.close());
+
+    productDialog.addEventListener("click", event => {
+      if (event.target === productDialog) productDialog.close();
+    });
+
+    function makeCard(entry, color, hint, onClick) {
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "catalog-card";
+      card.style.setProperty("--accent", color);
+
+      const art = document.createElement("span");
+      art.className = "catalog-art";
+      art.textContent = entry.icon || "✦";
+
+      if (entry.image) {
+        const img = document.createElement("img");
+        img.src = entry.image;
+        img.alt = "";
+        img.loading = "lazy";
+        img.onerror = () => img.remove();
+        art.appendChild(img);
+      }
+
+      const body = document.createElement("span");
+      body.className = "catalog-card__body";
+
+      const name = document.createElement("span");
+      name.className = "catalog-card__name";
+      name.textContent = displayName(entry);
+
+      const sub = document.createElement("span");
+      sub.className = "catalog-card__hint";
+      sub.textContent = hint;
+
+      body.append(name, sub);
+
+      const bar = document.createElement("span");
+      bar.className = "catalog-card__bar";
+
+      card.append(art, body, bar);
+      card.addEventListener("click", onClick);
+
+      return card;
+    }
+
+    function renderCategories() {
+      categoryGrid.replaceChildren();
+
+      categories.forEach(category => {
+        categoryGrid.appendChild(
+          makeCard(
+            category,
+            category.color,
+            labels[currentLang].viewItems,
+            () => {
+              itemGrid.replaceChildren();
+
+              document.getElementById("itemHeading").textContent =
+                displayName(category);
+
+              category.products.forEach(product => {
+                itemGrid.appendChild(
+                  makeCard(
+                    product,
+                    category.color,
+                    labels[currentLang].viewPhotos,
+                    () => showProduct(product)
+                  )
+                );
+              });
+
+              categoryView.hidden = true;
+              itemView.hidden = false;
+              catalog.scrollIntoView({ behavior: "smooth" });
+            }
+          )
+        );
+      });
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        element.textContent = labels[lang][element.dataset.i18n];
+      });
+
+      document.querySelectorAll("[data-i18n-html]").forEach(element => {
+        element.innerHTML = labels[lang][element.dataset.i18nHtml];
+      });
+
+      document.querySelectorAll("[data-lang]").forEach(button => {
+        button.setAttribute(
+          "aria-pressed",
+          String(button.dataset.lang === lang)
+        );
+      });
+
+      itemView.hidden = true;
+      categoryView.hidden = false;
+      if (productDialog.open) productDialog.close();
+      renderCategories();
+    }
+
+    document.querySelectorAll("[data-lang]").forEach(button => {
+      button.addEventListener("click", () => {
+        setLanguage(button.dataset.lang);
+      });
+    });
+
+    document.getElementById("showCategories")
+      .addEventListener("click", event => {
+        event.preventDefault();
+        catalog.hidden = false;
+        itemView.hidden = true;
+        categoryView.hidden = false;
+        catalog.scrollIntoView({ behavior: "smooth" });
+      });
+
+    document.getElementById("backToCategories")
+      .addEventListener("click", () => {
+        itemView.hidden = true;
+        categoryView.hidden = false;
+        catalog.scrollIntoView({ behavior: "smooth" });
+      });
+
+    setLanguage("ku");
+  </script>
+</body>
+</html>
