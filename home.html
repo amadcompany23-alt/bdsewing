@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BD Sewing Company</title>
+  <title>BD Sewing</title>
 
   <meta name="description" content="BD Sewing - Sewing supplies, tailoring accessories, irons, threads and sewing products in Iraq and Kurdistan.">
   <meta name="robots" content="index, follow">
@@ -211,7 +211,7 @@
       width: 100%;
       padding: 0;
       overflow: hidden;
-      text-align: right;
+      text-align: start;
       border: 1px solid #e8e1d3;
       border-radius: 17px;
       background: white;
@@ -366,11 +366,12 @@
 </head>
 
 <body>
-  <section class="bd-hero" dir="rtl">
+  <section class="bd-hero">
     <div class="site-topbar">
-      <div class="language-switch" role="group" aria-label="زمان / اللغة">
+      <div class="language-switch" role="group" aria-label="زمان / اللغة / Language">
         <button type="button" data-lang="ku" aria-pressed="true">کوردی</button>
         <button type="button" data-lang="ar" aria-pressed="false">عربي</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
       </div>
     </div>
 
@@ -392,7 +393,7 @@
 
       <div class="social-links">
         <a class="social whatsapp"
-           href="https://wa.me/9647509828338">واتساب</a>
+           href="https://wa.me/9647509828338" data-i18n="whatsapp">واتساب</a>
 
         <a class="social instagram"
            href="https://www.instagram.com/bd_sewing_company/"
@@ -416,13 +417,13 @@
           گەهاندن بو هەمی پارێزگەهێن عیراقێ
 		  
         </h3>
-		<h3> <a class="phone" href="tel:+9647509828338"style="color: white !important; text-decoration: none !important;">موبايل:07509828338</a> </h3>
+		<h3> <a class="phone" href="tel:+9647509828338"style="color: white !important; text-decoration: none !important;"><span data-i18n="phone">موبايل:</span> <bdi>07509828338</bdi></a> </h3>
 		
       </div>
     </div>
 
     <div class="bd-hero__mark">
-      <img src="bd.jpeg" alt="لوگویێ BD Sewing">
+      <img src="bd.jpeg" alt="BD Sewing logo">
     </div>
   </section>
 
@@ -453,7 +454,7 @@
     <button class="product-dialog__close"
             id="closeProductDialog"
             type="button"
-            aria-label="داخستن">×</button>
+            data-i18n-aria="close" aria-label="داخستن">×</button>
     <h2 id="productDialogTitle"></h2>
     <div class="product-dialog__gallery" id="productGallery"></div>
   </dialog>
@@ -461,94 +462,551 @@
   <script>
     /*
       ل ڤێرێ ناڤێ وێنەیێن خو بگوهۆڕە.
-      10.jpg تا 13.jpg ل تەنشت bd.html دابنێ.
+      فایلێن وێنەیان ل جهێن دیارکری دابنێ؛ images/ ناڤێ فۆلدەرە.
+      محصولات دارای products بخش دیگری باز می‌کنند؛ images عکس‌ها را باز می‌کند.
     */
     const categories = [
       {
-        name: "بەکەر",
+        name: "بەکەره", nameEn: "Sewing threads",
         nameAr: "خيوط الخياطة",
         color: "#d49a1f",
         image: "images/spools.jpg",
         icon: "🧵",
         products: [
           {
-            name: "بەکەرێن خەیاتیێ",
-            nameAr: "خيوط الخياطة",
+            name: "بەکەرێن خەیاتیێ(40s/20)", nameEn: "Sewing threads (40s/20)",
+            nameAr: "خيوط الخياطة(40s/20)",
             image: "images/sewing-spools.jpg",
             icon: "🧵"
           },
           {
-            name: "بەکەرێن ئۆڤەرێ",
-            nameAr: "خيوط الأوفرلوك",
+            name: "بەکەرێن ئۆڤەرێ(D150)", nameEn: "Overlock threads (D150)",
+            nameAr: "خيوط الأوفر(D150)",
             image: "1.jpeg",
             icon: "🧵",
-            images: ["10.jpg", "11.jpg", "12.jpg", "13.jpg"]
+            images: ["over1.jpeg","over2.jpeg","10.jpg", "11.jpg", "12.jpg", "13.jpg","14.jpg", "15.jpg", "16.jpg", "17.jpg","18.jpeg",
+			"19.jpeg", "20.jpeg", "21.jpeg","22.jpeg", "23.jpeg", "24.jpeg", "25.jpeg","26.jpeg", "27.jpeg", "28.jpeg", "29.jpeg",]
+          },
+{
+            name: "بەکەرێن خەیاتیێ(20s/2)", nameEn: "Sewing threads (20s/2)",
+            nameAr: "خيوط الخياطة(20s/2)",
+            image: "images/sewing-spools.jpg",
+            icon: "🧵"
+          },		  {
+            name: "بەکەرێن خەیاتیێ(20s/3)", nameEn: "Sewing threads (20s/3)",
+            nameAr: "خيوط الخياطة(20s/3)",
+            image: "images/sewing-spools.jpg",
+            icon: "🧵"
           }
         ]
       },
       {
-        name: "زنجیر",
+        name: "زنجیر", nameEn: "Zippers",
         nameAr: "السحابات",
         color: "#2d6c9d",
         image: "images/zippers.jpg",
         icon: "〰️",
         products: [
           {
-            name: "زنجیرێن جلکان",
-            nameAr: "سحابات الملابس",
+            name: "زنجیرێن نایلون", nameEn: "Nylon zippers",
+            nameAr: "سحابات نایلون",
             image: "images/clothing-zippers.jpg",
-            icon: "〰️"
-          },
-          {
-            name: "زنجیرێن جانتایان",
-            nameAr: "سحابات الحقائب",
-            image: "images/bag-zippers.jpg",
-            icon: "〰️"
-          }
+            icon: "〰️",
+            // بابەتێن نموونە: ناڤ، ڕەنگ و فایلێن وێنەیان ب حەزا خو بگوهۆڕە.
+            // بۆ زێدەکرنا بابەتەکی، ئێک ژ ڤان بلۆکان کۆپی بکە.
+            products: [
+             {
+    name: "ڤەکری", nameEn: "Open-end zippers",
+    nameAr: "مفتوح",
+    color: "#2d6c9d",
+    icon: "〰️",
+    image: "images/nylon-topic-1.jpg",
+
+    products: [
+      {
+        name: "65سم", nameEn: "65 cm",
+        nameAr: "65سم",
+        image: "images/nylon-topic-1.jpg",
+        images: [
+          "images/nylon-topic-1.jpg",
+          "images/nylon-topic-1-detail.jpg"
         ]
       },
       {
-        name: "ئوتی",
+        name: "85سم", nameEn: "85 cm",
+        nameAr: "85سم",
+        image: "images/nylon-topic-1-b.jpg",
+        images: [
+          "images/nylon-topic-1-b.jpg",
+          "images/nylon-topic-1-b-detail.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    name: "گرتی", nameEn: "Closed-end zippers",
+    nameAr: "مغلق",
+    color: "#95673d",
+    icon: "〰️",
+    image: "images/nylon-topic-2.jpg",
+
+    products: [
+      {
+        name: "رقم3", nameEn: "No. 3",
+        nameAr: "رقم3",
+        image: "images/nylon-topic-2.jpg",
+        images: [
+          "images/nylon-topic-2.jpg",
+          "images/nylon-topic-2-detail.jpg"
+        ]
+      }, 
+	  {
+        name: "رقم4", nameEn: "No. 4",
+        nameAr: "رقم4",
+        image: "images/nylon-topic-2.jpg",
+        images: [
+          "images/nylon-topic-2.jpg",
+          "images/nylon-topic-2-detail.jpg"
+        ]
+      },
+      {
+        name: "رقم5", nameEn: "No. 5",
+        nameAr: "رقم5",
+        image: "images/nylon-topic-2-b.jpg",
+        images: [
+          "images/nylon-topic-2-b.jpg",
+          "images/nylon-topic-2-b-detail.jpg"
+        ]
+      }
+    ]
+  }
+]
+            
+            
+          },
+		  
+		  
+         {
+            name: "زنجیرێن پلاستیک", nameEn: "Plastic zippers",
+            nameAr: "سحابات بلاستیک",
+            image: "images/clothing-zippers.jpg",
+            icon: "〰️",
+            // بابەتێن نموونە: ناڤ، ڕەنگ و فایلێن وێنەیان ب حەزا خو بگوهۆڕە.
+            // بۆ زێدەکرنا بابەتەکی، ئێک ژ ڤان بلۆکان کۆپی بکە.
+            products: [
+              {
+                name: "سحابا ساکو", nameEn: "Jacket zippers", nameAr: "سحابات القمصلة",
+                color: "#2d6c9d", icon: "〰️",
+                image: "images/nylon-topic-1.jpg",
+                images: ["images/nylon-topic-1.jpg", "images/nylon-topic-1-detail.jpg"]
+              },
+              {
+                name: "سحابا جێنز", nameEn: "Jeans zippers", nameAr: "سحاب جینز ",
+                color: "#95673d", icon: "〰️",
+                image: "images/nylon-topic-2.jpg",
+                images: ["images/nylon-topic-2.jpg", "images/nylon-topic-2-detail.jpg"]
+          },
+
+            ]
+          },
+ {
+            name: "زنجیرێن ئاسنى", nameEn: "Metal zippers",
+            nameAr: "سحابات حديد",
+            image: "images/clothing-zippers.jpg",
+            icon: "〰️",
+            // بابەتێن نموونە: ناڤ، ڕەنگ و فایلێن وێنەیان ب حەزا خو بگوهۆڕە.
+            // بۆ زێدەکرنا بابەتەکی، ئێک ژ ڤان بلۆکان کۆپی بکە.
+            products: [
+              {
+                name: "80سم", nameEn: "80cm", nameAr: "80سم",
+                color: "#2d6c9d", icon: "〰️",
+                image: "images/nylon-topic-1.jpg",
+                images: ["images/nylon-topic-1.jpg", "images/nylon-topic-1-detail.jpg"]
+              },
+              {
+                name: "150سم", nameEn: "150cm", nameAr: "150سم",
+                color: "#95673d", icon: "〰️",
+                image: "images/nylon-topic-2.jpg",
+                images: ["images/nylon-topic-2.jpg", "images/nylon-topic-2-detail.jpg"]
+              },
+              {
+                name: "20سم", nameEn: "20cm", nameAr: "20",
+                color: "#56846a", icon: "〰️",
+                image: "images/nylon-topic-3.jpg",
+                images: ["images/nylon-topic-3.jpg", "images/nylon-topic-3-detail.jpg"]
+              }
+            ]
+          },
+        ]
+      },
+      {
+        name: "ئوتی", nameEn: "Irons",
         nameAr: "المكاوي",
         color: "#af5c36",
         image: "images/irons.jpg",
         icon: "♨️",
         products: [
           {
-            name: "ئوتیێن SILVER STAR",
-            nameAr: "مكاوي SILVER STAR",
-            image: "images/silver-star.jpg",
-            icon: "♨️"
-          },
-          {
-            name: "ئوتیێن دەستی",
-            nameAr: "المكاوي اليدوية",
-            image: "images/hand-irons.jpg",
-            icon: "♨️"
+            name:  "ئوتیێن SILVER STAR   " , nameEn: "SILVER STAR irons",
+            nameAr: "المكاوي SILVER STAR",
+            image: "ss5.png",
+            icon: "♨️",
+            images: ["ss1.png","ss2.png","ss3.png","ss4.png","ss5.png","ss6.png"]
           }
         ]
       },
       {
-        name: "کەرستێن خەیاتیێ",
+        name: "کەرستێن خەیاتیێ", nameEn: "Sewing accessories",
         nameAr: "مستلزمات الخياطة",
         color: "#56846a",
         image: "images/accessories.jpg",
         icon: "✂️",
         products: [
           {
-            name: "مەقەس",
-            nameAr: "المقصات",
+            name: "(6)قاش", nameEn: "Rhinestones(10)",
+            nameAr: "(6)ستراس",
             image: "images/scissors.jpg",
             icon: "✂️"
           },
-          {
-            name: "سنجاق",
-            nameAr: "الدبابيس",
-            image: "images/pins.jpg",
-            icon: "📍"
+		  {
+            name: "قاش", nameEn: "Rhinestones",
+            nameAr: "ستراس",
+            image: "images/scissors.jpg",
+            icon: "✂️"
+          },
+       {
+            name: "قاش", nameEn: "Rhinestones",
+            nameAr: "ستراس",
+            image: "black.png",
+            icon: "🧵",
+            images: ["black.png", "gray.png", "j-gray.png", "gold-ab.png", "o-ab.png","blue.png","pink.png","p-red.png"]
           }
         ]
-      }
+      },
+	        {
+        name: "دوگمەیێن پلاستیکی", nameEn: "Plastic Buttons",
+        nameAr: "أزرار بلاستيكية",
+        color: "#56846a",
+        image: "images/button.jpg",
+        icon: "🕳️",
+        products: [
+          {
+            name: "18", nameEn: "18",
+            nameAr: "18",
+            image: "images/scissors.jpg",
+            icon: "🕳️️"
+          },
+		  {
+            name: "24", nameEn: "24",
+            nameAr: "24",
+            image: "images/scissors.jpg",
+            icon: "🕳️"
+          },
+       {
+            name: "32", nameEn: "32",
+            nameAr: "32",
+            image: "button.png",
+            icon: "🕳️",
+            images: []
+          },
+		  {
+            name: "34", nameEn: "34",
+            nameAr: "34",
+            image: "button.png",
+            icon: "🕳️",
+            images: []
+          }
+        ]
+      },
+	   {
+        name: "لاستیک", nameEn: "Elastic Band",
+        nameAr: "شريط مطاطي",
+        color: "#56846a",
+        image: "images/button.jpg",
+        icon: "🪢",
+        products: [
+          
+		  {
+            name: "لاستیکا بازنەیی", nameEn: "Round Elastic Cord",
+            nameAr: "حبل مطاطي مدور",
+            image: "images/scissors.jpg",
+            icon: "🪢️️"
+          },
+		  {
+            name: "8م", nameEn: "8mm",
+            nameAr: "8م",
+            image: "images/scissors.jpg",
+            icon: "🪢️️"
+          },
+		  {
+            name: "9م", nameEn: "9mm",
+            nameAr: "9م",
+            image: "images/scissors.jpg",
+            icon: "🪢️"
+          },
+       {
+            name: "2سم", nameEn: "2cm",
+            nameAr: "2سم",
+            image: "button.png",
+            icon: "🪢️",
+            images: []
+          },
+		  {
+            name: "3سم", nameEn: "3cm",
+            nameAr: "3سم",
+            image: "button.png",
+            icon: "🪢",
+            images: []
+          },
+		  {
+            name: "4سم", nameEn: "4cm",
+            nameAr: "4سم",
+            image: "button.png",
+            icon: "🪢️",
+            images: []
+          },
+		  {
+            name: "5سم", nameEn: "5cm",
+            nameAr: "5سم",
+            image: "button.png",
+            icon: "🪢️",
+            images: []
+          },
+		  {
+            name: "10سم", nameEn: "10cm",
+            nameAr: "10سم",
+            image: "button.png",
+            icon: "🪢️",
+            images: []
+          }
+        ]
+      },
+	  {
+        name: "مقص", nameEn: "Scissors",
+        nameAr: "مقصات",
+        color: "#C8102A",
+        image: "images/accessories.jpg",
+        icon: "✂️",
+        products: [
+          {
+            name: "QK", nameEn: "QK",
+            nameAr: "QK",
+            image: "مقص.png",
+            icon: "✂️"
+          },
+		  {
+            name: "DJ", nameEn: "DJ",
+            nameAr: "DJ",
+            image: "مقص1.png",
+            icon: "✂️"
+          },
+		   {
+            name: "MERZE", nameEn: "MERZE",
+            nameAr: "MERZE",
+            image: "مقص2.png",
+            icon: "✂️"
+          },
+		   {
+            name: "Asaburo", nameEn: "Asaburo",
+            nameAr: "Asaburo",
+            image: "مقص3.png",
+            icon: "✂️"
+          },
+		   {
+            name: "LANGUIREN", nameEn: "LANGUIREN",
+            nameAr: "LANGUIREN",
+            image: "مقص5.PNG",
+            icon: "✂️"
+          },
+		   {
+            name: "PIN", nameEn: "PIN",
+            nameAr: "PIN",
+            image: "مقص6.png",
+            icon: "✂️"
+          },
+	 
+		  {
+            name: "DONGSUNG", nameEn: "DONGSUNG",
+            nameAr: "DONGSUNG",
+            image: "مقص7.jpeg",
+            icon: "✂️"
+          },
+		   {
+            name: "Zhang Xiao Quan", nameEn: "Zhang Xiao Quan",
+            nameAr: "Zhang Xiao Quan",
+            image: "مقص8.jpeg",
+            icon: "✂️"
+          },
+		   {
+            name: "ZhengTian", nameEn: "ZhengTian",
+            nameAr: "ZhengTian",
+            image: "مقص9.jpeg",
+            icon: "✂️"
+          },
+		   {
+            name: "Guolong", nameEn: "Guolong",
+            nameAr: "Guolong",
+            image: "مقص10.jpeg",
+            icon: "✂️"
+          },
+		   {
+            name: "ZhengTian", nameEn: "ZhengTian",
+            nameAr: "ZhengTian",
+            image: "مقص11.jpeg",
+            icon: "✂️"
+          },
+	 
+		  {
+            name: "GOLDEN PHONEIX", nameEn: "GOLDEN PHONEIX",
+            nameAr: "GOLDEN PHONEIX",
+            image: "مقص12.jpeg",
+            icon: "✂️"
+          },
+		   {
+            name: "XINYI", nameEn: "XINYI",
+            nameAr: "XINYI",
+            image: "مقص13.jpeg",
+            icon: "✂️"
+          },
+		   {
+            name: "مەقەسا پاککرنێ", nameEn: "مقص تنظيف",
+            nameAr: "Thread Trimming Scissors",
+            image: "مقص14.jpeg",
+            icon: "✂️"
+          },
+		   {
+            name: "مەقەسا کارەبایی یا ستوونی", nameEn: "Electric Straight Knife Cutting Machine",
+            nameAr: "مقص كهربائي عمودي",
+            image: "مقص كهربائي عمودي.png",
+            icon: "✂️"
+          },
+		   {
+            name: "مەقەسا مەستەرە ", nameEn: "Electric Fabric Cutting Machine with Ruler",
+            nameAr: "مقص كهربائي مسطرة",
+            image: "مقص كهربائي مسطرة.png",
+            icon: "✂️"
+          },
+		   {
+            name: "مەقەسا کوسەرە", nameEn: "Tailor’s Buttonhole Scissors",
+            nameAr: "مقص كوسرة",
+            image: "مقص كوسرة.png",
+            icon: "✂️"
+          },
+		   {
+            name: "مەقەسا کارەبایی یا دەستی یا شەحنێ", nameEn: "Rechargeable Handheld Electric Scissors",
+            nameAr: "مقص كهربائي يدوي قابل للشحن",
+            image: "مقص كهربائي يدوي.png",
+            icon: "✂️"
+          },		  
+		  {
+            name: "مەقەسا کارەبایی یا دەستی، ب شەحن و کارەبا", nameEn: "Handheld Electric Scissors – Rechargeable & Corded",
+            nameAr: "مقص كهربائي يدوي يعمل بالشحن والكهرباء",
+            image: "مقص كهربائي يدوي1.png",
+            icon: "✂️"
+          },
+		  
+        ]
+      },
+	   {
+        name: "قاش", nameEn: "Rhinestones",
+        nameAr: "ستراس",
+        color: "#FAFAF7",
+        image: "images/accessories.jpg",
+        icon: "🧿",
+        products: [
+          {
+            name: "قاش(SS6)", nameEn: "Rhinestones(SS6)",
+            nameAr: "ستراس(SS6)",
+            image: "l_purple.jpeg",
+            icon: "🧿",
+            images: ["black.png", "gray.png", "j-gray.png", "gold-ab.png", "o-ab.png","red.jpeg","pink.png","p-red.png","green.jpeg","new-ab.jpeg","blue.png","l_purple.jpeg"]
+          },
+		  {
+            name: "قاش(SS10)", nameEn: "Rhinestones(SS10)",
+            nameAr: "ستراس(SS10)",
+            image: "red.jpeg",
+            icon: "🧿",
+            images: ["black.png", "gray.png", "j-gray.png", "gold-ab.png", "o-ab.png","red.jpeg","pink.png","p-red.png","green.jpeg","new-ab.jpeg","blue.png"]
+          },
+       {
+            name: "قاش(SS20)", nameEn: "Rhinestones(SS20)",
+            nameAr: "ستراس(SS20)",
+            image: "pave.jpeg",
+            icon: "🧿",
+            images: ["black.png", "gray.png", "j-gray.png", "gold-ab.png", "o-ab.png","blue.png","pink.png","p-red.png","green.jpeg","pave.jpeg","new-ab.jpeg"]
+          }
+        ]
+      }, {
+        name: "دەرزیکا مەکینەیا خەیاتیێ", nameEn: "Sewing Machine Needle",
+        nameAr: "إبرة ماكينة الخياطة",
+        color: "#2d6c9d",
+        image: "images/zippers.jpg",
+        icon: "📌",
+        products: [
+          {
+         
+            name: "دەرزیکا مەکینەیا خەیاتیێ یا مالێ", nameEn: "Home Sewing Machine Needle",
+            nameAr: "إبرة ماكينة خياطة منزلية",
+            image: "images/clothing-zippers.jpg",
+            icon: "📌",
+            // بابەتێن نموونە: ناڤ، ڕەنگ و فایلێن وێنەیان ب حەزا خو بگوهۆڕە.
+            // بۆ زێدەکرنا بابەتەکی، ئێک ژ ڤان بلۆکان کۆپی بکە.
+            products: [
+              {
+                name: "ألماني", nameEn: "Germany", nameAr: "ألماني",
+                color: "#2d6c9d", icon: "📌",
+                image: "images/nylon-topic-1.jpg",
+                images: ["images/nylon-topic-1.jpg", "images/nylon-topic-1-detail.jpg"]
+              },  {
+                name: "صيني", nameEn: "Chine", nameAr: "صيني ",
+                color: "#95673d", icon: "📌",
+                image: "images/nylon-topic-2.jpg",
+                images: ["images/nylon-topic-2.jpg", "images/nylon-topic-2-detail.jpg"]
+          },
+              {
+                name: "يابانى", nameEn: "japan", nameAr: "ياباني ",
+                color: "#95673d", icon: "📌",
+                image: "images/nylon-topic-2.jpg",
+                images: ["images/nylon-topic-2.jpg", "images/nylon-topic-2-detail.jpg"]
+          },  {
+                name: "كوري", nameEn: "korea", nameAr: "كوري ",
+                color: "#95673d", icon: "📌",
+                image: "images/nylon-topic-2.jpg",
+                images: ["images/nylon-topic-2.jpg", "images/nylon-topic-2-detail.jpg"]
+          },
+
+            ]
+          },
+ {
+            name: "دەرزیکا مەکینەیا خەیاتیێ یا صنعتی", nameEn: "Industrial Sewing Machine Needle",
+            nameAr: "إبرة ماكينة خياطة صناعية",
+            image: "images/clothing-zippers.jpg",
+            icon: "📌",
+            // بابەتێن نموونە: ناڤ، ڕەنگ و فایلێن وێنەیان ب حەزا خو بگوهۆڕە.
+            // بۆ زێدەکرنا بابەتەکی، ئێک ژ ڤان بلۆکان کۆپی بکە.
+            products: [
+              {
+                name: "ألماني", nameEn: "Germany", nameAr: "ألماني",
+                color: "#2d6c9d", icon: "📌",
+                image: "images/nylon-topic-1.jpg",
+                images: ["images/nylon-topic-1.jpg", "images/nylon-topic-1-detail.jpg"]
+              },
+            {
+                name: "صيني", nameEn: "Chine", nameAr: "صيني ",
+                color: "#95673d", icon: "📌",
+                image: "images/nylon-topic-2.jpg",
+                images: ["images/nylon-topic-2.jpg", "images/nylon-topic-2-detail.jpg"]
+          },
+            {
+                name: "يابانى", nameEn: "japan", nameAr: "ياباني ",
+                color: "#95673d", icon: "📌",
+                image: "images/nylon-topic-2.jpg",
+                images: ["images/nylon-topic-2.jpg", "images/nylon-topic-2-detail.jpg"]
+          },
+            ]
+          },
+        ]
+      },
     ];
 
     const labels = {
@@ -563,6 +1021,7 @@
         viewItems: "بابەتان ببینە ←",
         viewPhotos: "وێنەیان ببینە ←",
         missing: "وێنە نەهاتە دیتن: ",
+        whatsapp: "واتساب", phone: "موبايل:", close: "داخستن", backTo: "→ ڤەگەڕە ",
         instagram: "ئینستاگرام",
         facebook: "فەیس بووک",
         tiktok: "تیک تۆک",
@@ -579,11 +1038,28 @@
         viewItems: "شاهد المنتجات ←",
         viewPhotos: "شاهد الصور ←",
         missing: "تعذر عرض الصورة: ",
+        whatsapp: "واتساب", phone: "الهاتف:", close: "إغلاق", backTo: "→ العودة إلى ",
         instagram: "إنستغرام",
         facebook: "فيسبوك",
         tiktok: "تيك توك",
         snapchat: "سناب شات"
       }
+    };
+
+    labels.en = {
+      hero: "All your sewing essentials<br><em>in one place</em>",
+      wholesale: "Wholesale & retail",
+      showProducts: "View our products →",
+      delivery: "Delivery to all governorates of Iraq",
+      products: "Our products",
+      choose: "Choose a category to explore its products.",
+      back: "← Back to categories",
+      backTo: "← Back to ",
+      viewItems: "Explore products →",
+      viewPhotos: "View photos →",
+      missing: "Image not found: ",
+      whatsapp: "WhatsApp", instagram: "Instagram", facebook: "Facebook",
+      tiktok: "TikTok", snapchat: "Snapchat", phone: "Phone:", close: "Close"
     };
 
     let currentLang = "ku";
@@ -597,9 +1073,8 @@
     const productGallery = document.getElementById("productGallery");
 
     function displayName(entry) {
-      return currentLang === "ar"
-        ? (entry.nameAr || entry.name)
-        : entry.name;
+      if (currentLang === "en") return entry.nameEn || entry.name;
+      return currentLang === "ar" ? (entry.nameAr || entry.name) : entry.name;
     }
 
     function showProduct(product) {
@@ -676,44 +1151,56 @@
       return card;
     }
 
-    function renderCategories() {
-      categoryGrid.replaceChildren();
+    // هەر بابەتەک products هەبیت، بابەتێن دی ڤەدکەت؛ یێ دوماهیکێ وێنەیان ڤەدکەت.
+    const catalogPath = [];
+    const backButton = document.getElementById("backToCategories");
 
-      categories.forEach(category => {
-        categoryGrid.appendChild(
-          makeCard(
-            category,
-            category.color,
-            labels[currentLang].viewItems,
-            () => {
-              itemGrid.replaceChildren();
+    function hasProducts(entry) {
+      return Array.isArray(entry.products) && entry.products.length > 0;
+    }
 
-              document.getElementById("itemHeading").textContent =
-                displayName(category);
-
-              category.products.forEach(product => {
-                itemGrid.appendChild(
-                  makeCard(
-                    product,
-                    category.color,
-                    labels[currentLang].viewPhotos,
-                    () => showProduct(product)
-                  )
-                );
-              });
-
-              categoryView.hidden = true;
-              itemView.hidden = false;
+    function renderCatalog() {
+      const parent = catalogPath[catalogPath.length - 1];
+      const grid = parent ? itemGrid : categoryGrid;
+      const entries = parent ? parent.products : categories;
+      const inheritedColor = [...catalogPath].reverse().find(entry => entry.color)?.color || "#2d6c9d";
+      grid.replaceChildren();
+      entries.forEach(entry => {
+        grid.appendChild(makeCard(
+          entry,
+          entry.color || inheritedColor,
+          hasProducts(entry) ? labels[currentLang].viewItems : labels[currentLang].viewPhotos,
+          () => {
+            if (hasProducts(entry)) {
+              catalogPath.push(entry);
+              renderCatalog();
               catalog.scrollIntoView({ behavior: "smooth" });
+              backButton.focus({ preventScroll: true });
+            } else {
+              showProduct(entry);
             }
-          )
-        );
+          }
+        ));
       });
+      categoryView.hidden = Boolean(parent);
+      itemView.hidden = !parent;
+      if (parent) {
+        document.getElementById("itemHeading").textContent = displayName(parent);
+        const previous = catalogPath[catalogPath.length - 2];
+        backButton.textContent = previous
+          ? labels[currentLang].backTo + displayName(previous)
+          : labels[currentLang].back;
+      }
     }
 
     function setLanguage(lang) {
+      if (!labels[lang]) return;
       currentLang = lang;
       document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
+      document.querySelectorAll("[data-i18n-aria]").forEach(element => {
+        element.setAttribute("aria-label", labels[lang][element.dataset.i18nAria]);
+      });
 
       document.querySelectorAll("[data-i18n]").forEach(element => {
         element.textContent = labels[lang][element.dataset.i18n];
@@ -730,10 +1217,8 @@
         );
       });
 
-      itemView.hidden = true;
-      categoryView.hidden = false;
       if (productDialog.open) productDialog.close();
-      renderCategories();
+      renderCatalog();
     }
 
     document.querySelectorAll("[data-lang]").forEach(button => {
@@ -746,16 +1231,20 @@
       .addEventListener("click", event => {
         event.preventDefault();
         catalog.hidden = false;
-        itemView.hidden = true;
-        categoryView.hidden = false;
+        catalogPath.length = 0;
+        renderCatalog();
         catalog.scrollIntoView({ behavior: "smooth" });
       });
 
     document.getElementById("backToCategories")
       .addEventListener("click", () => {
-        itemView.hidden = true;
-        categoryView.hidden = false;
+        const previousEntry = catalogPath.pop();
+        renderCatalog();
         catalog.scrollIntoView({ behavior: "smooth" });
+        const grid = catalogPath.length ? itemGrid : categoryGrid;
+        const entries = catalogPath.length ? catalogPath[catalogPath.length - 1].products : categories;
+        const index = entries.indexOf(previousEntry);
+        if (index >= 0) grid.children[index].focus({ preventScroll: true });
       });
 
     setLanguage("ku");
